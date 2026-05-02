@@ -50,33 +50,48 @@
 
 <script>
 function getList() {
+    debugger; // Check selected category
     return document.getElementById(categorySelect.value);
 }
 
 function addSkill() {
+    debugger; // Start of addSkill
     let val = skillInput.value.trim();
-    if (!val) return alert("Enter skill");
+
+    if (!val) {
+        debugger; // Empty input case
+        return alert("Enter skill");
+    }
 
     let list = getList();
-    for (let li of list.children)
+
+    for (let li of list.children) {
+        debugger; // Loop check
         if (li.textContent.toLowerCase() === val.toLowerCase())
             return alert("Already exists");
+    }
 
+    debugger; // Before adding new skill
     list.innerHTML += `<li>${val}</li>`;
     skillInput.value = "";
 }
 
 function removeSkill() {
+    debugger; // Start of removeSkill
     let val = skillInput.value.trim().toLowerCase();
     let list = getList();
 
     for (let li of list.children) {
+        debugger; // Loop check
         if (li.textContent.toLowerCase() === val) {
+            debugger; // Before removal
             li.remove();
             skillInput.value = "";
             return;
         }
     }
+
+    debugger; // Not found case
     alert("Not found");
 }
 </script>
